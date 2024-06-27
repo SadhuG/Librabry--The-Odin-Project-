@@ -21,12 +21,61 @@
 
 // To facilitate this you will want to create the function that toggles a book’s read status on your Book prototype instance.
 
+const myLibrary = [
+  {
+    title: "The Communist Manifesto",
+    author: "Karl Marx & Fredrick Engels",
+    pages: 100,
+    read: true,
+  },
+  {
+    title: "Sapiens",
+    author: "Yuval Noah Harari",
+    pages: 360,
+    read: false,
+  },
+  {
+    title: "Don't Shut Up",
+    author: "Prakhar Gupta & Mudit Yadav",
+    pages: 500,
+    read: false,
+  },
+];
 
-const myLibrary = [];
-
-function Book() {
-  // the constructor...
+// the constructor...
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
+
 function addBookToLibrary() {
   // do stuff here
 }
+
+// Show the books in Library
+
+const cardContainer = document.getElementById("libraryContainer");
+function showCards(array) {
+  array.forEach((element, index) => {
+    const card = document.createElement("div");
+    card.classList.add("card"); // Add any necessary classes
+    card.setAttribute("data-index", index); // Add data attribute
+    card.id = `card-${index}`; // Optionally, set the id
+
+    const cardContent = `
+    <div class="book-title-container"><h3>${element.title}</h3></div>
+    <div class="book-author-container"><p><strong>Author:</strong> ${element.author}</p></div>
+    <div class="book-pages-container"><p><strong>Pages:</strong> ${element.pages}</p></div>
+    <div class="book-read-container"><p><strong>Read:</strong> ${
+      element.read ? "Book has been read" : "Not read yet"
+    }</p></div>
+  `;
+
+    card.innerHTML = cardContent;
+    cardContainer.appendChild(card);
+  });
+}
+
+showCards(myLibrary);
