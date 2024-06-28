@@ -61,8 +61,8 @@ function showCards(array) {
   cardContainer.innerHTML = "";
   array.forEach((element, index) => {
     const card = document.createElement("div");
-    card.classList.add("card"); // Add any necessary classes
-    card.id = `card-${index}`; // Optionally, set the id
+    card.classList.add("book-card"); // Add any necessary classes
+    card.id = `${index}`; // Optionally, set the id
 
     const cardContent = `
     <div class="book-title-container"><h3>${element.title}</h3></div>
@@ -71,9 +71,9 @@ function showCards(array) {
     <div class="book-read-container"><p><strong>Read:</strong> ${
       element.read ? "Book has been read" : "Book not read yet"
     }</p>
-    <span class="book-read-status" value="${element.read}">${
+    <button type="button" class="book-read-status" id = "${index}" value="${element.read}">${
       element.read ? "Book not read yet" : "Book has been read"
-    }</span></div>
+    }</button></div>
     <button type="button" class="remove-book-btn" id = "${index}">Remove Book</button>
   `;
 
@@ -86,10 +86,10 @@ showCards(myLibrary);
 
 // Removing Books from myLibrary
 // Click handler for entire DIV container
-cardContainer.addEventListener("click", function (e) {
+cardContainer.addEventListener("click", function (btn) {
   // But only triggers for elements that have an remove-book-btn class
-  if (e.target.classList.contains("remove-book-btn")) {
-    removeBook(e.target.id, myLibrary);
+  if (btn.target.classList.contains("remove-book-btn")) {
+    removeBook(btn.target.id, myLibrary);
   }
 });
 function removeBook(index, array) {
@@ -97,3 +97,42 @@ function removeBook(index, array) {
   showCards(myLibrary);
 }
 
+// Updating read status of books
+cardContainer.addEventListener("click", function (e) {
+  // But only triggers for elements that have an remove-book-btn class
+  if (e.target.classList.contains("book-read-status")) {
+    updateReadStatus(e.target.id, e.target.value, myLibrary);
+  }
+});
+
+function updateReadStatus(index, value, array) {
+  if (value == "true") {
+    array[index].read = false;
+    updateReadDisplay(index, array);
+  }
+  if (value == "false") {
+    array[index].read = true;
+    updateReadDisplay(index, array);
+  }
+}
+
+function updateReadDisplay(index, array) {
+  const allCard = document.getElementsByClassName("book-card");
+  const crrCard = allCard[index];
+  const element = array[index];
+
+  const cardContent = `
+    <div class="book-title-container"><h3>${element.title}</h3></div>
+    <div class="book-author-container"><p><strong>Author:</strong> ${element.author}</p></div>
+    <div class="book-pages-container"><p><strong>Pages:</strong> ${element.pages}</p></div>
+    <div class="book-read-container"><p><strong>Read:</strong> ${
+      element.read ? "Book has been read" : "Book not read yet"
+    }</p>
+    <button type="button" class="book-read-status" id = "${index}" value="${element.read}">${
+    element.read ? "Book not read yet" : "Book has been read"
+  }</button></div>
+    <button type="button" class="remove-book-btn" id = "${index}">Remove Book</button>
+    `;
+
+  crrCard.innerHTML = cardContent;
+}
