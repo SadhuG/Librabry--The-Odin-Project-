@@ -10,30 +10,30 @@
 
 <body>
   <h1>Hello World</h1>
-  <form action="">
+  <form id="addBook">
     <label for="title">
-      Title: <input type="text" id="title" name="book-title" required>
+      Title: <input type="text" id="title" required>
     </label>
     <br>
     <label for="author">
-      Author: <input type="text" id="author" name="book-author" required>
+      Author: <input type="text" id="author" required>
     </label>
     <br>
     <label for="pages">
-      Pages: <input type="number" id="pages" name="book-pages" required>
+      Pages: <input type="number" id="pages" required>
     </label>
     <br>
     <legend>Book read:</legend>
     <label for="bookReadYes">
-      <input type="radio" id="bookReadYes" name="book-read" value="true" checked="checked">
+      <input type="radio" id="bookReadYes" name="book-read-status" value="true" checked="checked">
       Yes
     </label>
     <label for="bookReadNo">
-      <input type="radio" id="bookReadNo" name="book-read" value="false">
+      <input type="radio" id="bookReadNo" name="book-read-status" value="false">
       No
     </label>
     <br>
-    <button type="submit">Add</button>
+    <button type="submit">Add Book</button>
   </form>
 
   <div class="library-container" id="libraryContainer"></div>
