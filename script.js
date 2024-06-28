@@ -42,7 +42,7 @@ const myLibrary = [
   },
 ];
 
-// the constructor...
+// the Book constructor...
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -58,10 +58,10 @@ function addBookToLibrary() {
 
 const cardContainer = document.getElementById("libraryContainer");
 function showCards(array) {
+  cardContainer.innerHTML = "";
   array.forEach((element, index) => {
     const card = document.createElement("div");
     card.classList.add("card"); // Add any necessary classes
-    card.setAttribute("data-index", index); // Add data attribute
     card.id = `card-${index}`; // Optionally, set the id
 
     const cardContent = `
@@ -69,8 +69,12 @@ function showCards(array) {
     <div class="book-author-container"><p><strong>Author:</strong> ${element.author}</p></div>
     <div class="book-pages-container"><p><strong>Pages:</strong> ${element.pages}</p></div>
     <div class="book-read-container"><p><strong>Read:</strong> ${
-      element.read ? "Book has been read" : "Not read yet"
-    }</p></div>
+      element.read ? "Book has been read" : "Book not read yet"
+    }</p>
+    <span class="book-read-status" value="${element.read}">${
+      element.read ? "Book not read yet" : "Book has been read"
+    }</span></div>
+    <button type="button" class="remove-book-btn" id = "${index}">Remove Book</button>
   `;
 
     card.innerHTML = cardContent;
@@ -79,3 +83,17 @@ function showCards(array) {
 }
 
 showCards(myLibrary);
+
+// Removing Books from myLibrary
+// Click handler for entire DIV container
+cardContainer.addEventListener("click", function (e) {
+  // But only triggers for elements that have an remove-book-btn class
+  if (e.target.classList.contains("remove-book-btn")) {
+    removeBook(e.target.id, myLibrary);
+  }
+});
+function removeBook(index, array) {
+  array.splice(index, 1);
+  showCards(myLibrary);
+}
+
