@@ -1,6 +1,7 @@
 # My Library Project
 
 This project is a simple library application that allows users to add, display, and manage books. Users can input book details, view them in a card format, and update or remove books from the library.
+It's a basic CRUD app as to say.
 
 ## Features
 
