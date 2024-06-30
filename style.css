@@ -1,0 +1,213 @@
+/* 1. Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 6.1 Remove input spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* 6.2 Remove all btn styles css */
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Create a root stacking context */
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  font-family: "Inter", system-ui, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 1.5rem;
+  font-style: normal;
+  text-wrap: wrap;
+}
+
+div,
+section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page-container {
+  max-width: 1440px;
+  flex-direction: column;
+  align-content: center;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  border-bottom: 1px solid #838383;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 24px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.sidebar-wrapper {
+  align-content: flex-start;
+  gap: 32px;
+  border-right: 1px solid #838383;
+}
+
+.container {
+  height: fit-content;
+}
+
+.form-submit {
+  padding: 10px 30px 10px 30px;
+  margin-top: 16px;
+  border-radius: 200px;
+  color: whitesmoke;
+  background-color: black;
+}
+
+.library-container {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 24px;
+}
+
+.book-card {
+  width: 45%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  padding: 30px 26px 30px 26px;
+  border-radius: 24px;
+  border: 1px solid #838383;
+}
+
+.card-heading-wrapper {
+  flex-direction: column;
+}
+
+.card-heading-wrapper>h3 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.author-page-wrapper {
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 32px;
+}
+
+.author-name-wrapper {
+  align-items: center;
+}
+
+.author-name-wrapper>p {
+  text-wrap: wrap;
+}
+
+.author-name-wrapper>span {
+  font-size: 1rem;
+}
+
+.page-wrapper>p {
+  white-space: nowrap;
+}
+
+.book-read-and-remove-wrapper {
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.read-status-update{
+  font-size: 1rem;
+  color: blue;
+  text-decoration: underline;
+}
+
+.remove-book-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  font-size: 0.25rem;
+  color: red;
+  line-height: 1rem;
+}
+
+
+footer {
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
